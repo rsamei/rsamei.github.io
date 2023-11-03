@@ -1,0 +1,21 @@
+- name: NumPy
+  percentage: 95
+  color: success
+
+- name: Pandas
+  percentage: 95
+  color: success
+
+- name: Tensorflow/Keras
+  percentage: 80
+  color: success
+
+- name: PyTorch
+  percentage: 65
+  color: warning
+
+- name: Tidymodels
+  percentage: 65
+  color: warning
+
+

@@ -1,0 +1,47 @@
+<!-- Experience Section -->
+<h1 class="experience-title">Experience</h1>
+<div class="col mt-4">
+  <div class="timeline-body style="background-color: transparent;">
+    {% for item in site.data.experience %}
+      <div class="timeline-item">
+        <div class="content">
+          <h3>{{ item.title }}</h3>
+          <h6 class="date">{{ item.from }} — {{ item.to }}</h6>
+          <ul>
+            {% assign sentences = item.description | split: '. ' %}  <!-- Split the description into separate sentences -->
+            {% for sentence in sentences %}
+              {% unless sentence == empty %}  <!-- Avoid creating an empty list item if the last character is a period -->
+                <li>{{ sentence | append: '.' }}</li>  <!-- Create a list item for each sentence and append a period -->
+              {% endunless %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<h1 class="experience-title">Education</h1> <!-- Title for the Education Section -->
+<div class="col mt-4">
+  <div class="timeline-body style="background-color: transparent;">
+    {% for item in site.data.education %}
+      <div class="timeline-item">
+        <div class="content">
+          <h3>{{ item.title }}</h3>
+          <h6 class="date">{{ item.from }} — {{ item.to }}</h6>
+          
+          
+          <h5>Focus</h5>
+          <ul>
+            {% for focus_item in item.focus %}
+              <li>{{ focus_item }}</li>
+            {% endfor %}
+          </ul>
+          <p>{{ item.hashtags }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+

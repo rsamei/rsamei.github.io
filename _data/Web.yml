@@ -1,0 +1,14 @@
+- name: MySQL/PostgreSQL/MongoDB
+  percentage: 80
+  color: success
+
+- name: Vue.js
+  percentage: 70
+  color: success
+
+- name: HTML/CSS/JS/jQuery
+  percentage: 60
+  color: warning
+
+
+
