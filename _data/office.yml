@@ -1,0 +1,9 @@
+- name: Word
+  percentage: 80
+  color: success
+- name: Excel
+  percentage: 80
+  color: success
+- name: Power Point
+  percentage: 80
+  color: success
