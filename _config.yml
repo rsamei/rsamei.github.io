@@ -1,7 +1,7 @@
 ### Site Settings ###
 title               : Rasoul Samei
 description         : >-
-                      Master of data 😊, strummer of strings 🎸, and explorer of the world in between 🌏.
+                      Master of data 😊, strummer of strings🎸,and explorer of the world in between🌏.
 baseurl             :                      # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 repository          : rsamei/rsamei.github.io     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
 remote_theme        : YoussefRaafatNasry/portfolYOU
