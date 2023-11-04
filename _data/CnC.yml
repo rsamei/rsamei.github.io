@@ -1,24 +1,13 @@
-- name: Git
+- name: Jupyter Notebook
   percentage: 95
   color: success
-
-- name: Linux
-  percentage: 90
-  color: success
-
-- name: Docker
+- name: Git
   percentage: 80
   color: success
-
-- name: Kubernetes
-  percentage: 65
+- name: Power Bi
+  percentage: 75
   color: warning
-
-- name: Google Cloud
-  percentage: 65
-  color: warning
-
-- name: Latex
-  percentage: 50
+- name: Tableau
+  percentage: 25
   color: danger
 
