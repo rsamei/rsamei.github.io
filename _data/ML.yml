@@ -9,4 +9,4 @@
   color: success
 - name: Tensor Flow
   percentage: 70
-  color: danger
+  color: warning

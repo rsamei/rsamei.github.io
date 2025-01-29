@@ -13,7 +13,7 @@
 
 - name: Shiny
   percentage: 90
-  color: warning
+  color: success
 
 - name: Matplotlib
   percentage: 90
