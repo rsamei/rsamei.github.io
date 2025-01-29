@@ -1,12 +1,12 @@
 - name: Tidymodels
-  percentage: 90
+  percentage: 95
   color: success
 - name: H2O
-  percentage: 80
+  percentage: 90
   color: success
 - name: Scikit-learn
-  percentage: 80
+  percentage: 95
   color: success
 - name: Tensor Flow
-  percentage: 25
+  percentage: 70
   color: danger

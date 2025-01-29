@@ -1,14 +1,21 @@
 
+- title: Clinical Data Scientist & Researcher | Istituto Mario Negri | Dept. of Medical Epidemiology
+  from: Nov 2024
+  to: Present
+  description: Develop and validate predictive models to support clinical and epidemiological research.
+               Design and implement workflows for processing and analyzing clinical trial data.
+               Collaborate with multidisciplinary teams to translate data insights into actionable healthcare strategies.
+
+- title: Data Scientist | The Openwork Partnership 
+  from: Dec 2023
+  to: June 2024
+  description: Developed an end-to-end Anomaly Detection system using unsupervised machine learning techniques within Azure ML.
+               Utilized SQL in Azure Synapse Analytics for managing and analyzing large datasets.
+               Created dynamic reports and dashboards in Power BI.
+
 - title: Machine Learning Tutor | Università degli Studi di Bergamo | Dept. of Economics
   from: March 2023
   to: June 2023
-  description: Conducted data analysis to identify inefficiencies and cost-savingopportunities in production processes.
-               Integrated data analytics into production planning processes to improvedecision-making.
-               Utilized different methods to optimize inventory levels and reduce waste.
-
-- title: Production Planning Internship | Palood Industries
-  from: October 2018
-  to: December 2020
   description: Conducted data analysis to identify inefficiencies and cost-savingopportunities in production processes.
                Integrated data analytics into production planning processes to improvedecision-making.
                Utilized different methods to optimize inventory levels and reduce waste.
