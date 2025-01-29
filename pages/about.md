@@ -9,7 +9,7 @@ weight: 1
  {% include elements/button.html link="/assets/cv.pdf" text="Download CV" style="success" size="sm" %}
 
 I am **{{ site.author.name }}** :wave:,<br>
-I'm an enthusiastic data analyst with a master’s degree in Economics and Data Analysis from Università degli Studi di Bergamo. With a solid foundation in business management and hands-on experience in data analysis, I have been developing my skills in areas like machine learning, data visualization, and database management. In addition to my academic and professional journey, my proficiency in programming languages such as Python and R, along with my ability to effectively communicate findings, position me as a valuable contributor to data-driven decision-making processes.
+Data Scientist with expertise in machine learning, data analysis, and visualization. Currently contributing to clinical and epidemiological research at Istituto Mario Negri. Successfully developed a high-impact anomaly detection system at The Openwork Partnership. Proficient in Python, R, SQL, Power BI, and SparkSQL, with experience in designing KPIs and building dynamic reports to drive strategic decision-making. Holds a Master’s in Economics and Data Analysis, with a goal of advancing as a full-stack data scientist.
 
 <div class="row">
 {% include about/skills.html title="Tools" source=site.data.CnC %}

@@ -17,4 +17,4 @@
 
 - name: Matplotlib
   percentage: 90
-  color: danger
+  color: success
