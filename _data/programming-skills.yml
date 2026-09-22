@@ -1,8 +1,0 @@
-
-- name: R
-  percentage: 95
-  color: success
-
-- name: Python
-  percentage: 85
-  color: success
