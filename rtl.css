@@ -37,6 +37,9 @@ em { font-style: normal; }
 .pub-note { direction: rtl; text-align: right; }
 .row-stack[dir="ltr"] { text-align: right; }
 
+/* Some stat values are a phrase, not a numeral, so they need a smaller size. */
+.stat-num { font-size: var(--step-2); }
+
 /* Physical offsets the base sheet sets in px. */
 .skip { left: auto; right: var(--s2); }
 .progress { left: auto; right: 0; transform-origin: right; }
