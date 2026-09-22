@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    document.documentElement.classList.add('js');
+    try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Financial Advisor, a walkthrough</title>
+  <meta name="description" content="A walkthrough of Financial Advisor, an open-source decision system for household money, run against a synthetic household. Shows the evidence table, the gate record and the scoring.">
+  <link rel="canonical" href="https://rasoulsamei.com/financial-advisor/">
+  <meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#101114" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://rasoulsamei.com/financial-advisor/">
+  <meta property="og:title" content="Financial Advisor, a walkthrough">
+  <meta property="og:description" content="An open-source decision system for household money, walked through on a synthetic household. Evidence, gates and scoring, all shown.">
+  <meta property="og:image" content="https://rasoulsamei.com/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="wordmark" href="../">Rasoul Samei</a>
+      <div class="header-right">
+        <nav aria-label="Sections">
+          <a href="../#work">Work</a>
+          <a href="https://github.com/rsamei/financial_advisor" target="_blank" rel="noopener noreferrer">Repository</a>
+          <a href="../#contact">Contact</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <span class="theme-dot" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="demo-hero">
+      <div class="container">
+        <p class="label" data-load style="--i:1">Open source · Python · MIT</p>
+        <h1 class="demo-title" data-load style="--i:2"><span class="line"><span>Financial</span></span><span class="line"><span>Advisor</span></span></h1>
+        <p class="demo-lede" data-load style="--i:3">A decision system for one household's money. It reads your own statements, pulls dated evidence from public sources, and puts every money decision through the same gates before it will say yes.</p>
+        <p class="demo-note" data-load style="--i:4">Everything below is a real run against the synthetic household in the repository's test fixtures. It is nobody's balance sheet, and no figure here belongs to a real person.</p>
+        <p class="demo-links" data-load style="--i:5">
+          <a class="btn" href="https://github.com/rsamei/financial_advisor" target="_blank" rel="noopener noreferrer">Repository</a>
+          <a href="https://github.com/rsamei/financial_advisor#quick-start" target="_blank" rel="noopener noreferrer">Run it yourself</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- 01 THE PROBLEM -->
+    <section class="section" aria-labelledby="why-title">
+      <div class="container section-grid">
+        <div class="section-label">
+          <span class="label-num" aria-hidden="true">01</span>
+          <h2 id="why-title" class="section-title"><span class="line"><span data-reveal>Why</span></span></h2>
+        </div>
+        <div class="section-body prose">
+          <p data-reveal>Most financial tools answer a question the moment you ask it. The answer sounds the same whether the evidence behind it was three independent sources from this morning or one blog post from 2019, and you cannot tell which you got.</p>
+          <p data-reveal>This one refuses to hide that. A claim without three independent, fresh, successful sources is marked <code>UNDETERMINED</code>, and an undetermined claim caps the decision score at 55 no matter how good the idea looks. Missing evidence stays missing instead of quietly rounding up to a yes.</p>
+          <p data-reveal>It also never executes anything. It drafts, you act. There is no broker connection to get wrong.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 THE HOUSEHOLD -->
+    <section class="section section-alt" aria-labelledby="household-title">
+      <div class="container section-grid">
+        <div class="section-label">
+          <span class="label-num" aria-hidden="true">02</span>
+          <h2 id="household-title" class="section-title"><span class="line"><span data-reveal>The household</span></span></h2>
+        </div>
+        <div class="section-body">
+          <p class="prose" data-reveal><code>/setup</code> reads the statements you drop into <code>documents/</code> and asks one batch of questions. Anything it does not know stays <code>_(unset)_</code> rather than being guessed at. Here is the synthetic one, and every derived figure underneath it is computed, not typed in.</p>
+
+          <div class="figure-grid" data-reveal-group>
+            <div class="fig" data-reveal><span class="fig-num">€60,000</span><span class="fig-label">Net worth</span><span class="fig-sub">€85,000 assets less €25,000 mortgage</span></div>
+            <div class="fig" data-reveal><span class="fig-num">6.0</span><span class="fig-label">Months of runway</span><span class="fig-sub">€15,000 liquid against €2,500 essential spend</span></div>
+            <div class="fig" data-reveal><span class="fig-num">25%</span><span class="fig-label">Savings rate</span><span class="fig-sub">€1,000 spare from €4,000 net income</span></div>
+            <div class="fig" data-reveal><span class="fig-num">52.1%</span><span class="fig-label">Debt to income</span><span class="fig-sub">Mortgage at 2.1%, 72 months left</span></div>
+          </div>
+
+          <p class="prose" data-reveal>One hard goal: €60,000 for a house deposit by September 2031. One soft goal: retirement, no target figure, 2051. The pension pot holds €30,000 with €2,400 a year going in and a 1.5% employer match.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 EVIDENCE -->
+    <section class="section" aria-labelledby="evidence-title">
+      <div class="container section-grid">
+        <div class="section-label">
+          <span class="label-num" aria-hidden="true">03</span>
+          <h2 id="evidence-title" class="section-title"><span class="line"><span data-reveal>Evidence</span></span></h2>
+        </div>
+        <div class="section-body">
+          <p class="prose" data-reveal><code>/market</code> pulls from 14 providers, each one a separate module with no shared state. Every request is recorded in <code>market/queries.json</code> with its arguments, so any claim on the page can be replayed later and checked. The coverage table names what failed, which matters more than what worked.</p>
+
+          <div class="term" data-reveal>
+            <div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="term-name">/market</span></div>
+            <pre><code><span class="c">COVERAGE  2026-09-20</span>
+
+claim                     sources  freshest     verdict
+────────────────────────────────────────────────────────
+policy rate, euro area          3  2026-09-18   <span class="ok">SUPPORTED</span>
+euro area HICP                  3  2026-09-17   <span class="ok">SUPPORTED</span>
+EUR/USD                         4  2026-09-19   <span class="ok">SUPPORTED</span>
+Italian deposit rates           1  2026-08-02   <span class="bad">UNDETERMINED</span>
+equity risk sentiment           2  2026-09-19   <span class="bad">UNDETERMINED</span>
+
+<span class="c">2 failed:</span>
+  ecb        TLS certificate could not be verified against this
+             machine's trust store. Local configuration, not a
+             source failure.
+  reddit     rate limited (429), no records
+
+<span class="c">independence: mirrors of one feed share an operator and
+count once. 4 sources, 3 operators.</span></code></pre>
+          </div>
+
+          <p class="prose" data-reveal>Two things are deliberate here. A failed fetch raises rather than returning an empty list, because "the source said nothing" and "the source did not answer" are different facts and only one of them should count toward independence. And a provider never follows a URL it finds inside fetched content, so a feed cannot talk the system into going somewhere else.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 A DECISION -->
+    <section class="section section-alt" aria-labelledby="decision-title">
+      <div class="container section-grid">
+        <div class="section-label">
+          <span class="label-num" aria-hidden="true">04</span>
+          <h2 id="decision-title" class="section-title"><span class="line"><span data-reveal>A decision</span></span></h2>
+        </div>
+        <div class="section-body">
+          <p class="prose" data-reveal>Ask it something. <code>/decide</code> runs the gates in order, scores what survives, and writes the whole record to the tracker. This household is asking whether to put the €3,000 sitting in savings into the equity fund it already holds.</p>
+
+          <div class="term" data-reveal>
+            <div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="term-name">/decide move €3,000 savings into the world equity fund</span></div>
+            <pre><code><span class="c">GATES</span>
+1 liquidity      <span class="bad">FLAG</span>  runway falls 6.0 → 4.8 months, under the
+                       6-month target set in the profile
+2 policy         <span class="ok">PASS</span>  inside the IPS equity band (60-80%),
+                       lands at 78.2%
+3 tax            <span class="ok">PASS</span>  regime amministrato, no realisation
+4 evidence       <span class="bad">FLAG</span>  equity risk sentiment UNDETERMINED,
+                       2 sources, 3 required
+
+<span class="c">SCORE</span>
+raw 71, capped to <span class="bad">55</span>  (cap:60 liquidity=FLAG,
+                          cap:55 coverage=UNDETERMINED)
+band: <span class="bad">hold</span>
+
+<span class="c">THE DECISIVE CHECK</span>
+Top up the emergency fund to 6 months first. That single
+move clears gate 1 and the raw score stands on its own.
+
+<span class="c">STRONGEST ALTERNATIVE</span>
+€3,000 against the mortgage. Guaranteed 2.1%, no market
+risk, and it does not touch the runway.</code></pre>
+          </div>
+
+          <p class="prose" data-reveal>Both numbers are always reported, 71 and 55. A capped score that showed only the 55 would lose the fact that the idea was reasonable and the evidence was not. And the cap that bit here, the liquidity one, is fixable in a week, which is why the report leads with that rather than with the verdict.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 WHAT KEEPS IT HONEST -->
+    <section class="section" aria-labelledby="honest-title">
+      <div class="container section-grid">
+        <div class="section-label">
+          <span class="label-num" aria-hidden="true">05</span>
+          <h2 id="honest-title" class="section-title"><span class="line"><span data-reveal>What keeps it honest</span></span></h2>
+        </div>
+        <div class="section-body">
+          <ul class="guard-list" data-reveal-group>
+            <li data-reveal><strong>Nothing that quotes an amount is ever committed.</strong> A guard script checks the ignore rules are still in force and scans every tracked file before a commit lands. Your balance sheet never leaves the machine.</li>
+            <li data-reveal><strong>Nothing executes.</strong> No order, no broker login, no filing. A test exists whose only job is to keep that true.</li>
+            <li data-reveal><strong>Opinions are quarantined.</strong> Where it states a view about the future, that view is labelled, kept out of every gate, and scored against what actually happened later.</li>
+            <li data-reveal><strong>Material non-public information is refused.</strong> A tip that looks like MNPI is refused and logged. Published insider data, Form 4 filings and congressional disclosures, is fair game and moves only the evidence dimension.</li>
+            <li data-reveal><strong>The rulebook is versioned.</strong> Change a threshold and a check fails until you bump the version, so a silently changed weight cannot alter every verdict from then on.</li>
+          </ul>
+
+          <p class="prose" data-reveal>It is Python with nothing but the standard library, on purpose, so no third-party package sits between a provider response and a verdict. 559 tests. Jurisdiction is Italy and EUR for now, and no tax rule is used until it carries an official source URL and a date it was checked.</p>
+
+          <p class="prose" data-reveal><strong>It is not licensed financial advice.</strong> It is a structured second opinion that shows its working, and every report it writes says so.</p>
+
+          <p class="prose demo-cta" data-reveal><a class="btn" href="https://github.com/rsamei/financial_advisor" target="_blank" rel="noopener noreferrer">Read the code</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Rasoul Samei · Bergamo, Italy · <a href="../">Back to the site</a></p>
+    </div>
+  </footer>
+
+  <script src="../main.js" defer></script>
+</body>
+</html>

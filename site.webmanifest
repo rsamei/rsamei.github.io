@@ -1,0 +1,8 @@
+{
+  "name": "Rasoul Samei",
+  "short_name": "R. Samei",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }],
+  "theme_color": "#faf9f7",
+  "background_color": "#faf9f7",
+  "display": "browser"
+}

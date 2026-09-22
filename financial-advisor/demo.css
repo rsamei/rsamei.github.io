@@ -1,0 +1,87 @@
+/* Financial Advisor walkthrough. Extends styles.css and reuses its tokens,
+   so the theme toggle works here with no extra colours. */
+
+:root { --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+
+/* ---------- Hero ---------- */
+.demo-hero { padding-top: calc(var(--s8) + var(--s6)); padding-bottom: var(--s7); }
+.demo-title {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(2.8rem, 1.8rem + 4vw, 5.5rem);
+  line-height: 0.95; letter-spacing: -0.02em; margin: 0 0 var(--s4);
+}
+.demo-lede {
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.5rem);
+  line-height: 1.35; color: var(--ink-muted);
+  max-width: 34ch; margin-bottom: var(--s3); letter-spacing: -0.01em;
+}
+.demo-note {
+  font-size: var(--step--1); color: var(--ink-faint);
+  max-width: 52ch; margin-bottom: var(--s4);
+  padding-left: var(--s3); border-left: 2px solid var(--line);
+}
+.demo-links { display: flex; gap: var(--s4); align-items: center; font-size: var(--step--1); font-weight: 500; }
+.demo-cta { margin-top: var(--s4); }
+
+/* ---------- Derived-figure grid ---------- */
+.figure-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: var(--s4); margin: var(--s5) 0;
+  padding-block: var(--s4); border-block: 1px solid var(--line);
+}
+.fig { display: flex; flex-direction: column; gap: 2px; }
+.fig-num { font-family: var(--serif); font-size: var(--step-2); line-height: 1; color: var(--accent); }
+.fig-label { font-size: var(--step--1); font-weight: 500; }
+.fig-sub { font-size: var(--step--1); color: var(--ink-faint); line-height: 1.4; }
+
+/* ---------- Terminal block ---------- */
+.term {
+  margin: var(--s5) 0; border: 1px solid var(--line); border-radius: 4px;
+  background: var(--paper); overflow: hidden;
+}
+.term-bar {
+  display: flex; align-items: center; gap: var(--s1);
+  padding: var(--s2) var(--s3); border-bottom: 1px solid var(--line);
+  background: var(--paper-alt);
+}
+.term-bar .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+.term-bar .dot.r { background: #d08b7d; } .term-bar .dot.y { background: #d8bd7a; } .term-bar .dot.g { background: #8fae92; }
+.term-name { margin-left: var(--s2); font-family: var(--mono); font-size: 0.78rem; color: var(--ink-faint); }
+.term pre { margin: 0; padding: var(--s3); overflow-x: auto; }
+.term code {
+  font-family: var(--mono); font-size: 0.78rem; line-height: 1.55;
+  color: var(--ink); white-space: pre;
+}
+.term .c   { color: var(--ink-faint); }
+.term .ok  { color: var(--accent); font-weight: 500; }
+.term .bad { color: #b2603f; font-weight: 500; }
+
+/* Inline code in prose */
+.prose code, .guard-list code {
+  font-family: var(--mono); font-size: 0.86em;
+  background: var(--accent-soft); padding: 0.1em 0.35em; border-radius: 3px;
+}
+
+/* ---------- Guarantee list ---------- */
+.guard-list { display: grid; gap: var(--s3); margin: var(--s4) 0 var(--s5); max-width: 68ch; }
+.guard-list li { padding-left: var(--s3); border-left: 2px solid var(--accent-soft); line-height: 1.6; }
+.guard-list strong { font-weight: 500; }
+
+/* ---------- Dark mode ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .term-bar .dot.r { background: #8c5546; }
+  :root:not([data-theme="light"]) .term-bar .dot.y { background: #8a7644; }
+  :root:not([data-theme="light"]) .term-bar .dot.g { background: #56705a; }
+  :root:not([data-theme="light"]) .term .bad { color: #d98a63; }
+}
+:root[data-theme="dark"] .term-bar .dot.r { background: #8c5546; }
+:root[data-theme="dark"] .term-bar .dot.y { background: #8a7644; }
+:root[data-theme="dark"] .term-bar .dot.g { background: #56705a; }
+:root[data-theme="dark"] .term .bad { color: #d98a63; }
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 767px) {
+  .demo-hero { padding-top: calc(var(--s7) + var(--s5)); }
+  .term code { font-size: 0.7rem; }
+  .figure-grid { grid-template-columns: 1fr 1fr; gap: var(--s3); }
+}
