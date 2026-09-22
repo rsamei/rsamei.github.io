@@ -308,6 +308,40 @@
                 <span class="row-meta"><a href="https://www.theopenworkpartnership.com/" target="_blank" rel="noopener noreferrer">The Openwork Partnership</a> · Swindon, Regno Unito · 2023–2024</span>
               </div>
               <p>Sviluppo di un sistema di anomaly detection non supervisionata in Azure Machine Learning per individuare pattern insoliti nei dati relativi alle performance dei consulenti ipotecari e supportare i processi interni di verifica della conformità.</p>
+              <figure class="pipe" data-reveal aria-labelledby="pipe-caption">
+                <svg class="pipe-svg" viewBox="0 0 400 150" role="img" aria-labelledby="pipe-caption">
+                <defs><marker id="pa" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="6" markerHeight="6" orient="auto"><path class="pipe-arrow" d="M0 0 L6 3 L0 6 Z"/></marker><marker id="pa-m" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="6" markerHeight="6" orient="auto"><path class="pipe-arrow is-model" d="M0 0 L6 3 L0 6 Z"/></marker></defs>
+                <rect class="pipe-box" x="4" y="72" width="90" height="42" rx="2"/>
+                <text class="pipe-t" x="11" y="86">Pulizia</text>
+                <text class="pipe-s" x="11" y="97">nuovi dati grezzi</text>
+                <rect class="pipe-box" x="102" y="72" width="90" height="42" rx="2"/>
+                <text class="pipe-t" x="109" y="86">Feature engineering</text>
+                <text class="pipe-s" x="109" y="97">variabili derivate</text>
+                <rect class="pipe-box" x="200" y="72" width="90" height="42" rx="2"/>
+                <text class="pipe-t" x="207" y="86">Scoring</text>
+                <text class="pipe-s" x="207" y="97">modello addestrato</text>
+                <text class="pipe-s" x="207" y="106">sui nuovi dati</text>
+                <rect class="pipe-box" x="298" y="72" width="90" height="42" rx="2"/>
+                <text class="pipe-t" x="305" y="86">Spiegazione</text>
+                <text class="pipe-s" x="305" y="97">valori SHAP</text>
+                <text class="pipe-s" x="305" y="106">grafici PCA</text>
+                <rect class="pipe-box is-model" x="200" y="10" width="90" height="42" rx="2"/>
+                <text class="pipe-t" x="207" y="24">Addestramento</text>
+                <text class="pipe-s" x="207" y="35">warm start</text>
+                <text class="pipe-s" x="207" y="44">sui nuovi dati</text>
+                <path class="pipe-edge" d="M94 93.0 L101 93.0" marker-end="url(#pa)"/>
+                <path class="pipe-edge" d="M192 93.0 L199 93.0" marker-end="url(#pa)"/>
+                <path class="pipe-edge" d="M290 93.0 L297 93.0" marker-end="url(#pa)"/>
+                <text class="pipe-io" x="49.0" y="52" text-anchor="middle">dati grezzi</text>
+                <path class="pipe-edge" d="M49.0 56 L49.0 71" marker-end="url(#pa)"/>
+                <text class="pipe-io" x="192" y="34.0" text-anchor="end">dati di training</text>
+                <path class="pipe-edge is-model" d="M245.0 52 L245.0 71" marker-end="url(#pa-m)"/>
+                <path class="pipe-edge is-model" d="M290 31 C 318 31, 343.0 40, 343.0 71" marker-end="url(#pa-m)"/>
+                <path class="pipe-edge" d="M343.0 114 L343.0 132" marker-end="url(#pa)"/>
+                <text class="pipe-io" x="343.0" y="146" text-anchor="middle">dashboard Power BI</text>
+                </svg>
+                <figcaption id="pipe-caption" class="pipe-caption">La pipeline in Azure ML così come girava: pulizia dei nuovi dati grezzi, feature engineering, scoring con un modello addestrato in warm start, poi valori SHAP e grafici PCA esportati nella dashboard Power BI usata dai supervisori.</figcaption>
+              </figure>
               <p>Parallelamente, ho definito, calcolato e validato oltre 28 KPI aziendali, rendendo i risultati disponibili a manager e responsabili senior tramite dashboard Power BI.</p>
               <p class="row-outcome">Il modello ha contribuito all’evoluzione dei processi interni di monitoraggio e la metodologia è stata successivamente pubblicata a ICSEM 2025.</p>
               <p class="row-outcome">Ho inoltre sviluppato pipeline con Azure Python SDK e Spark SQL e, insieme a un collega, ho lavorato alla trasformazione di applicazioni COBOL legacy in servizi web e all’introduzione dell’intelligenza artificiale in alcuni progetti selezionati.</p>
