@@ -161,7 +161,7 @@
               <text class="sofa-total" x="322" y="143" text-anchor="middle">11</text>
             </svg>
             <div class="spark-tip" aria-hidden="true"><span class="spark-tip-main"></span><span class="spark-tip-sub"></span></div>
-            <figcaption id="spark-caption" class="spark-caption">SOFA-2 nelle prime 24 ore di ricovero in terapia intensiva. Per ciascuno dei sei sistemi d’organo si prende il valore peggiore in quella finestra, e i sei punteggi si sommano in uno. L’ho costruito per l’articolo su JAMA 2025, partendo dai record MargheritaTre (GiViTI), JSON annidato e testo libero, fino a una riga per paziente. I valori qui sono inventati, non dati di pazienti.</figcaption>
+            <figcaption id="spark-caption" class="spark-caption">SOFA-2 nelle prime 24 ore di ricovero in terapia intensiva, valore peggiore per ogni sistema d’organo. L’ho costruito per l’articolo su JAMA 2025 dai record MargheritaTre (GiViTI). I valori sono inventati, non dati di pazienti.</figcaption>
           </figure>
         </div>
         <figure class="hero-photo" data-parallax="0.06" data-reveal="clip">
@@ -276,7 +276,7 @@
                 <h3>SOFA-2: sviluppo dello score pubblicato su JAMA</h3>
                 <span class="row-meta"><a href="https://www.marionegri.it/" target="_blank" rel="noopener noreferrer">Istituto Mario Negri</a> · 2025</span>
               </div>
-              <p>Ho fatto l’ETL dai record grezzi MargheritaTre (GiViTI), JSON annidato e testo libero, ho calcolato la tabella SOFA-2 e poi le statistiche e le analisi per l’articolo.</p>
+              <p>Ho fatto l’ETL sui dati grezzi MargheritaTre (GiViTI), che arrivavano come JSON annidato e testo libero, ho calcolato la tabella SOFA-2 e poi le statistiche e le analisi per l’articolo.</p>
               <p class="row-outcome">Ho partecipato allo studio come coautore nell’ambito di un’ampia collaborazione internazionale tra più istituzioni di ricerca.</p>
               <p class="row-stack">Score di gravità · Calibrazione dei modelli · R · SQL</p>
             </li>
@@ -336,11 +336,11 @@
                 <path class="pipe-edge" d="M49.0 56 L49.0 71" marker-end="url(#pa)"/>
                 <text class="pipe-io" x="192" y="34.0" text-anchor="end">dati di training</text>
                 <path class="pipe-edge is-model" d="M245.0 52 L245.0 71" marker-end="url(#pa-m)"/>
-                <path class="pipe-edge is-model" d="M290 31 C 318 31, 343.0 40, 343.0 71" marker-end="url(#pa-m)"/>
+                <path class="pipe-edge is-model" d="M343.0 72 C 343.0 40, 318 31, 291 31" marker-end="url(#pa-m)"/>
                 <path class="pipe-edge" d="M343.0 114 L343.0 132" marker-end="url(#pa)"/>
                 <text class="pipe-io" x="343.0" y="146" text-anchor="middle">dashboard Power BI</text>
                 </svg>
-                <figcaption id="pipe-caption" class="pipe-caption">La pipeline in Azure ML. I nuovi dati grezzi vengono puliti e trasformati in feature, un modello addestrato in warm start li valuta, e l’ultimo passo calcola valori SHAP e grafici PCA per la dashboard Power BI su cui lavoravano i supervisori.</figcaption>
+                <figcaption id="pipe-caption" class="pipe-caption">La pipeline in Azure ML. I nuovi dati grezzi vengono puliti e trasformati in feature, un modello addestrato in warm start li valuta, e l’ultimo passo calcola valori SHAP e grafici PCA per la dashboard Power BI su cui lavoravano i supervisori. Gli stessi dati tornano poi in addestramento, così il modello è pronto per il giro successivo.</figcaption>
               </figure>
               <p>Parallelamente, ho definito, calcolato e validato oltre 28 KPI aziendali, rendendo i risultati disponibili a manager e responsabili senior tramite dashboard Power BI.</p>
               <p class="row-outcome">Il modello ha contribuito all’evoluzione dei processi interni di monitoraggio e la metodologia è stata successivamente pubblicata a ICSEM 2025.</p>
