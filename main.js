@@ -9,6 +9,14 @@
   var counters = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
   var pending = reveals.slice();
 
+  /* ---------- Locale: Persian digits on the fa page ---------- */
+  var isFa = document.documentElement.lang === 'fa';
+  var faDigits = '۰۱۲۳۴۵۶۷۸۹';
+  function num(n) {
+    var str = String(n);
+    return isFa ? str.replace(/[0-9]/g, function (d) { return faDigits.charAt(+d); }) : str;
+  }
+
   /* ---------- Native scroll-driven animations where supported ---------- */
   var sda = !reduceMotion && window.CSS && CSS.supports && CSS.supports('animation-timeline: view()');
   if (sda) {
@@ -63,7 +71,9 @@
       }
       cross.setAttribute('x1', xs[best]); cross.setAttribute('x2', xs[best]);
       pt.setAttribute('cx', xs[best]); pt.setAttribute('cy', ys[best]);
-      tip.textContent = 'Day ' + (best + 1) + ' · SOFA-2 score ' + vals[best];
+      tip.textContent = isFa
+        ? 'روز ' + num(best + 1) + ' · نمره SOFA-2 ' + num(vals[best])
+        : 'Day ' + (best + 1) + ' · SOFA-2 score ' + vals[best];
       tip.style.left = (xs[best] / 320 * r.width) + 'px';
       tip.style.top = (ys[best] / 80 * r.height - 8) + 'px';
       spark.classList.add('is-hover');
@@ -98,7 +108,7 @@
       if (start === null) start = ts;
       var p = Math.min(1, (ts - start) / dur);
       var val = Math.round(target * easeOut(p));
-      el.textContent = prefix + val + suffix;
+      el.textContent = prefix + num(val) + suffix;
       if (p < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
