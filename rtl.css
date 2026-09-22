@@ -45,11 +45,10 @@ em { font-style: normal; }
 .progress { left: auto; right: 0; transform-origin: right; }
 .theme-dot { left: auto; right: 4px; }
 .theme-toggle[aria-pressed="true"] .theme-dot { transform: translateX(-18px); }
-.spark-label { text-anchor: start; }
 
-/* The sparkline is a Latin chart; keep it reading left to right. */
-.spark { direction: ltr; }
-.spark-caption { direction: rtl; text-align: right; }
+/* The figures read as time lines and flows; keep them left to right. */
+.spark, .pipe { direction: ltr; }
+.spark-caption, .pipe-caption { direction: rtl; text-align: right; }
 
 /* Language switch in the header. */
 .lang-link {

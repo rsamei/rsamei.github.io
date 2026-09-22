@@ -54,34 +54,33 @@
   /* ---------- Sparkline hover ---------- */
   var spark = document.querySelector('.spark');
   if (spark) {
-    var svg = spark.querySelector('.spark-svg');
+    var svg = spark.querySelector('.sofa-svg');
     var tip = spark.querySelector('.spark-tip');
-    var cross = spark.querySelector('.spark-cross');
-    var pt = spark.querySelector('.spark-pt');
-    var xs = [4.0, 25.7, 47.4, 69.1, 90.8, 112.5, 134.2, 155.8, 177.5, 199.2, 220.9, 242.6, 264.3, 286.0];
-    var ys = [27.4, 18.9, 14.6, 23.1, 27.4, 31.7, 36.0, 36.0, 40.3, 44.6, 48.9, 48.9, 53.1, 57.4];
-    var vals = [9, 11, 12, 10, 9, 8, 7, 7, 6, 5, 4, 4, 3, 2];
-    function onMove(e) {
+    var tipMain = tip.querySelector('.spark-tip-main');
+    var tipSub = tip.querySelector('.spark-tip-sub');
+    var rows = Array.prototype.slice.call(spark.querySelectorAll('.sofa-row'));
+    var VBW = 344, VBH = 156;
+    function showRow(row) {
+      rows.forEach(function (r) { r.classList.toggle('is-on', r === row); });
       var r = svg.getBoundingClientRect();
-      var px = ((e.clientX - r.left) / r.width) * 320;
-      var best = 0, dist = Infinity;
-      for (var i = 0; i < xs.length; i++) {
-        var d = Math.abs(xs[i] - px);
-        if (d < dist) { dist = d; best = i; }
-      }
-      cross.setAttribute('x1', xs[best]); cross.setAttribute('x2', xs[best]);
-      pt.setAttribute('cx', xs[best]); pt.setAttribute('cy', ys[best]);
-      tip.textContent = isFa
-        ? 'روز ' + num(best + 1) + ' · نمره SOFA-2 ' + num(vals[best])
-        : 'Day ' + (best + 1) + ' · SOFA-2 score ' + vals[best];
-      tip.style.left = (xs[best] / 320 * r.width) + 'px';
-      tip.style.top = (ys[best] / 80 * r.height - 8) + 'px';
+      tipMain.textContent = row.getAttribute('data-tip');
+      tipSub.textContent = row.getAttribute('data-sub');
+      var half = tip.offsetWidth / 2;
+      var px = parseFloat(row.getAttribute('data-x')) / VBW * r.width;
+      tip.style.left = Math.max(half, Math.min(r.width - half, px)) + 'px';
+      tip.style.top = (parseFloat(row.getAttribute('data-y')) / VBH * r.height - 10) + 'px';
       spark.classList.add('is-hover');
     }
-    svg.addEventListener('mousemove', onMove);
-    svg.addEventListener('mouseleave', function () { spark.classList.remove('is-hover'); });
-    svg.addEventListener('touchstart', function (e) { if (e.touches[0]) onMove(e.touches[0]); }, { passive: true });
-    svg.addEventListener('touchend', function () { spark.classList.remove('is-hover'); });
+    function hideRows() {
+      spark.classList.remove('is-hover');
+      rows.forEach(function (r) { r.classList.remove('is-on'); });
+    }
+    rows.forEach(function (row) {
+      row.addEventListener('mouseenter', function () { showRow(row); });
+      row.addEventListener('touchstart', function () { showRow(row); }, { passive: true });
+    });
+    svg.addEventListener('mouseleave', hideRows);
+    svg.addEventListener('touchend', hideRows);
   }
 
   /* ---------- Stagger indices ---------- */
