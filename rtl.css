@@ -47,8 +47,8 @@ em { font-style: normal; }
 .theme-toggle[aria-pressed="true"] .theme-dot { transform: translateX(-18px); }
 
 /* The figures read as time lines and flows; keep them left to right. */
-.spark, .pipe, .mort { direction: ltr; }
-.spark-caption, .pipe-caption, .mort-caption { direction: rtl; text-align: right; }
+.pipe, .mort { direction: ltr; }
+.pipe-caption, .mort-caption { direction: rtl; text-align: right; }
 
 /* Language switch in the header. */
 .lang-link {

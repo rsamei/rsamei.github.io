@@ -52,37 +52,6 @@
   }
 
   /* ---------- Sparkline hover ---------- */
-  var spark = document.querySelector('.spark');
-  if (spark) {
-    var svg = spark.querySelector('.sofa-svg');
-    var tip = spark.querySelector('.spark-tip');
-    var tipMain = tip.querySelector('.spark-tip-main');
-    var tipSub = tip.querySelector('.spark-tip-sub');
-    var rows = Array.prototype.slice.call(spark.querySelectorAll('.sofa-row'));
-    var VBW = 344, VBH = 156;
-    function showRow(row) {
-      rows.forEach(function (r) { r.classList.toggle('is-on', r === row); });
-      var r = svg.getBoundingClientRect();
-      tipMain.textContent = row.getAttribute('data-tip');
-      tipSub.textContent = row.getAttribute('data-sub');
-      var half = tip.offsetWidth / 2;
-      var px = parseFloat(row.getAttribute('data-x')) / VBW * r.width;
-      tip.style.left = Math.max(half, Math.min(r.width - half, px)) + 'px';
-      tip.style.top = (parseFloat(row.getAttribute('data-y')) / VBH * r.height - 10) + 'px';
-      spark.classList.add('is-hover');
-    }
-    function hideRows() {
-      spark.classList.remove('is-hover');
-      rows.forEach(function (r) { r.classList.remove('is-on'); });
-    }
-    rows.forEach(function (row) {
-      row.addEventListener('mouseenter', function () { showRow(row); });
-      row.addEventListener('touchstart', function () { showRow(row); }, { passive: true });
-    });
-    svg.addEventListener('mouseleave', hideRows);
-    svg.addEventListener('touchend', hideRows);
-  }
-
   var mort = document.querySelector('.mort');
   if (mort) {
     var msvg = mort.querySelector('.mort-svg');
