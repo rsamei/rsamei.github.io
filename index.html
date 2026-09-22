@@ -160,7 +160,7 @@
               <text class="sofa-total" x="322" y="143" text-anchor="middle">11</text>
             </svg>
             <div class="spark-tip" aria-hidden="true"><span class="spark-tip-main"></span><span class="spark-tip-sub"></span></div>
-            <figcaption id="spark-caption" class="spark-caption">SOFA-2 over the first 24 hours of ICU admission: the worst value in the window for each of six organ systems, then one score. The pipeline I built for the JAMA 2025 paper, from MargheritaTre (GiViTI) records in nested JSON and free text to one row per patient. Illustrative values, not patient data.</figcaption>
+            <figcaption id="spark-caption" class="spark-caption">SOFA-2 for the first 24 hours of ICU admission. Each of the six organ systems takes its worst value in that window, and the six scores add up to one. I built this for the JAMA 2025 paper, from MargheritaTre (GiViTI) records, nested JSON and free text, down to one row per patient. The values here are made up, not patient data.</figcaption>
           </figure>
         </div>
         <figure class="hero-photo" data-parallax="0.06" data-reveal="clip">
@@ -265,7 +265,7 @@
                 <h3>SOFA-2 score, published in JAMA</h3>
                 <span class="row-meta"><a href="https://www.marionegri.it/" target="_blank" rel="noopener noreferrer">Mario Negri</a> · 2025</span>
               </div>
-              <p>ETL from the raw MargheritaTre (GiViTI) records, nested JSON and free text, into one row per patient; SOFA-2 computed on the first 24 hours of ICU admission; then the statistical analysis for the paper and manuscript review.</p>
+              <p>I did the ETL from the raw MargheritaTre (GiViTI) records, nested JSON and free text, and built one row per patient. From that I computed SOFA-2 for the first 24 hours of ICU admission and ran the statistical analysis for the paper. I also reviewed the manuscript.</p>
               <p class="row-outcome">Contributing author. The study ran as a large international collaboration across several institutions.</p>
               <p class="row-stack">R · SQL · Severity scores · Model calibration</p>
             </li>
@@ -328,7 +328,7 @@
                 <path class="pipe-edge" d="M343.0 114 L343.0 132" marker-end="url(#pa)"/>
                 <text class="pipe-io" x="343.0" y="146" text-anchor="middle">Power BI dashboard</text>
                 </svg>
-                <figcaption id="pipe-caption" class="pipe-caption">The Azure ML pipeline as it ran: clean the new raw data, engineer features, score with a warm-started model, then compute SHAP values and PCA plots and export them to the Power BI dashboard the supervisors used.</figcaption>
+                <figcaption id="pipe-caption" class="pipe-caption">The Azure ML pipeline. New raw data is cleaned and turned into features, a warm-started model scores it, and the last step computes SHAP values and PCA plots for the Power BI dashboard the supervisors worked from.</figcaption>
               </figure>
               <p class="row-outcome">The model supported the evolution of the supervision function at the firm, and the method was published at ICSEM 2025. I also built Azure Python SDK and Spark SQL pipelines, and worked with a colleague on converting legacy COBOL applications into web-based services and bringing AI into selected projects.</p>
               <p class="row-stack">Azure ML · Python · Spark SQL · Power BI</p>
