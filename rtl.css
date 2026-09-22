@@ -1,0 +1,59 @@
+/* ==========================================================
+   Persian / RTL layer. Loaded only by /fa/.
+   The base layout is flex and grid, so direction flips on its
+   own; this file handles type and the few physical offsets.
+   ========================================================== */
+
+:root {
+  --serif: "Vazirmatn", "Instrument Serif", Georgia, serif;
+  --sans:  "Vazirmatn", "Inter", system-ui, -apple-system, sans-serif;
+}
+
+body { line-height: 1.9; }
+
+/* Persian script does not take tracking, and negative tracking
+   breaks the joins. Latin runs keep theirs, see [dir="ltr"] below. */
+h1, h2, h3 { letter-spacing: 0; line-height: 1.35; }
+.wordmark, .label, .skills dt { letter-spacing: 0; }
+.hero-name { line-height: 1.2; }
+.hero-name .line { padding-block: 0.06em; }
+
+/* Serif display sizes are tuned for Latin; Persian needs less. */
+.hero-name { font-size: clamp(2.6rem, 1.8rem + 4.2vw, 5.6rem); }
+.contact-title, .section-title { line-height: 1.3; }
+
+em { font-style: normal; }
+
+/* Latin runs inside Persian text: titles, venues, tool names, email. */
+[dir="ltr"] {
+  font-family: "Inter", system-ui, sans-serif;
+  unicode-bidi: isolate;
+}
+.pub-title[dir="ltr"] { font-family: "Instrument Serif", Georgia, serif; }
+.pub-venue em { font-style: italic; }
+
+/* The citation block is Latin, so it sets left; the note goes back to Persian. */
+.pub-main { text-align: left; }
+.pub-note { direction: rtl; text-align: right; }
+.row-stack[dir="ltr"] { text-align: right; }
+
+/* Physical offsets the base sheet sets in px. */
+.skip { left: auto; right: var(--s2); }
+.progress { left: auto; right: 0; transform-origin: right; }
+.theme-dot { left: auto; right: 4px; }
+.theme-toggle[aria-pressed="true"] .theme-dot { transform: translateX(-18px); }
+.spark-label { text-anchor: start; }
+
+/* The sparkline is a Latin chart; keep it reading left to right. */
+.spark { direction: ltr; }
+.spark-caption { direction: rtl; text-align: right; }
+
+/* Language switch in the header. */
+.lang-link {
+  font-size: var(--step--1);
+  color: var(--ink-muted);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.lang-link:hover { color: var(--accent); border-color: var(--accent); }
