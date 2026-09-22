@@ -160,7 +160,7 @@
               <text class="sofa-total" x="322" y="143" text-anchor="middle">11</text>
             </svg>
             <div class="spark-tip" aria-hidden="true"><span class="spark-tip-main"></span><span class="spark-tip-sub"></span></div>
-            <figcaption id="spark-caption" class="spark-caption">SOFA-2 for the first 24 hours of ICU admission. Each of the six organ systems takes its worst value in that window, and the six scores add up to one. I built this for the JAMA 2025 paper, from MargheritaTre (GiViTI) records, nested JSON and free text, down to one row per patient. The values here are made up, not patient data.</figcaption>
+            <figcaption id="spark-caption" class="spark-caption">SOFA-2 for the first 24 hours of ICU admission, worst value per organ system. I built this for the JAMA 2025 paper from the MargheritaTre (GiViTI) records. The values are made up, not patient data.</figcaption>
           </figure>
         </div>
         <figure class="hero-photo" data-parallax="0.06" data-reveal="clip">
@@ -265,7 +265,7 @@
                 <h3>SOFA-2 score, published in JAMA</h3>
                 <span class="row-meta"><a href="https://www.marionegri.it/" target="_blank" rel="noopener noreferrer">Mario Negri</a> · 2025</span>
               </div>
-              <p>I did the ETL from the raw MargheritaTre (GiViTI) records, nested JSON and free text, calculated the SOFA-2 table, and then did the stats and analysis for the paper.</p>
+              <p>I did the ETL on the raw MargheritaTre (GiViTI) data, which came as nested JSON and free text, calculated the SOFA-2 table, and then did the stats and analysis for the paper.</p>
               <p class="row-outcome">Contributing author. The study ran as a large international collaboration across several institutions.</p>
               <p class="row-stack">R · SQL · Severity scores · Model calibration</p>
             </li>
