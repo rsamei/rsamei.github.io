@@ -83,6 +83,38 @@
     svg.addEventListener('touchend', hideRows);
   }
 
+  var mort = document.querySelector('.mort');
+  if (mort) {
+    var msvg = mort.querySelector('.mort-svg');
+    var mtip = mort.querySelector('.mort-tip');
+    var mcross = mort.querySelector('.mort-cross');
+    var mp1 = mort.querySelector('.mort-pt1');
+    var mp2 = mort.querySelector('.mort-pt2');
+    var mxs = mort.getAttribute('data-xs').split(',').map(parseFloat);
+    var my1 = mort.getAttribute('data-y1').split(',').map(parseFloat);
+    var my2 = mort.getAttribute('data-y2').split(',').map(parseFloat);
+    var mtips = JSON.parse(mort.getAttribute('data-tips'));
+    function mortMove(e) {
+      var r = msvg.getBoundingClientRect();
+      var px = ((e.clientX - r.left) / r.width) * 400;
+      var best = 0, dist = Infinity;
+      for (var i = 0; i < mxs.length; i++) { var dd = Math.abs(mxs[i] - px); if (dd < dist) { dist = dd; best = i; } }
+      mcross.setAttribute('x1', mxs[best]); mcross.setAttribute('x2', mxs[best]);
+      mp1.setAttribute('cx', mxs[best]); mp1.setAttribute('cy', my1[best]);
+      mp2.setAttribute('cx', mxs[best]); mp2.setAttribute('cy', my2[best]);
+      mtip.textContent = mtips[best];
+      var half = mtip.offsetWidth / 2;
+      var left = mxs[best] / 400 * r.width;
+      mtip.style.left = Math.max(half, Math.min(r.width - half, left)) + 'px';
+      mtip.style.top = (Math.min(my1[best], my2[best]) / 178 * r.height - 10) + 'px';
+      mort.classList.add('is-hover');
+    }
+    msvg.addEventListener('mousemove', mortMove);
+    msvg.addEventListener('mouseleave', function () { mort.classList.remove('is-hover'); });
+    msvg.addEventListener('touchstart', function (e) { if (e.touches[0]) mortMove(e.touches[0]); }, { passive: true });
+    msvg.addEventListener('touchend', function () { mort.classList.remove('is-hover'); });
+  }
+
   /* ---------- Stagger indices ---------- */
   document.querySelectorAll('[data-reveal-group]').forEach(function (group) {
     var kids = Array.prototype.slice.call(group.querySelectorAll(':scope > [data-reveal], :scope > * > [data-reveal]'));
