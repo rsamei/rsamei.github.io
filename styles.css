@@ -292,10 +292,23 @@ em { font-style: italic; }
   .hero-photo { max-width: 260px; }
   .hero-lede { max-width: 30ch; }
   .scroll-hint { display: none; }
+  .bg-line { display: none; }
 }
 
 /* ---------- Sections ---------- */
-.section { padding-block: var(--section-gap); }
+.section { padding-block: var(--section-gap); position: relative; }
+.section > .container { position: relative; z-index: 1; }
+
+/* One faint line, drawn once when Research scrolls into view, then still. */
+.bg-line { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.07; }
+.bg-line path { fill: none; stroke: var(--accent); stroke-width: 1.5; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.bg-line.is-drawn path { animation: bgdraw 3.2s var(--ease) forwards; }
+@keyframes bgdraw {
+  from { stroke-dashoffset: 1; }
+  99%  { stroke-dashoffset: 0; stroke-dasharray: 1; }
+  to   { stroke-dashoffset: 0; stroke-dasharray: none; }
+}
+@media (max-width: 767px) { .bg-line { display: none; } }
 .section-alt { background: var(--paper-alt); }
 .section-grid {
   display: grid;
