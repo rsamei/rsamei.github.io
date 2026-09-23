@@ -84,17 +84,6 @@
     msvg.addEventListener('touchend', function () { mort.classList.remove('is-hover'); });
   }
 
-  var bgLine = document.querySelector('.bg-line');
-  if (bgLine && !reduceMotion && 'IntersectionObserver' in window) {
-    var bio = new IntersectionObserver(function (entries) {
-      if (entries.some(function (e) { return e.isIntersecting; })) {
-        bgLine.classList.add('is-drawn');
-        bio.disconnect();
-      }
-    }, { threshold: 0.25 });
-    bio.observe(bgLine);
-  }
-
   /* ---------- Stagger indices ---------- */
   document.querySelectorAll('[data-reveal-group]').forEach(function (group) {
     var kids = Array.prototype.slice.call(group.querySelectorAll(':scope > [data-reveal], :scope > * > [data-reveal]'));
